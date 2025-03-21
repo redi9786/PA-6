@@ -169,14 +169,14 @@ It shows the proportion of votes (abstain, no, yes) within the top 7 countries
 
 ### Roll Calls
 
-The second data set, `roll_calls` has more information on the type of vote, the importance, whether it was a resolution, and date of the vote.  What does eh following code do?
+The second data set, `roll_calls` has more information on the type of vote, the importance, whether it was a resolution, and date of the vote.  What does the following code do?
 
 ```{r}
 roll_calls |> 
   distinct(short)
 ```
 
-> Description of code results
+> This code outputs the topics that countries are voting on.
 
 
 
@@ -197,7 +197,7 @@ roll_calls |>
 
 What information is missing from the above graphic that might be useful in understanding the issues the UN commonly votes on?
 
-> Insert Answer Here
+> The context. We do not know what issues or things that the coutries are voting on. 
 
 
 
@@ -209,7 +209,7 @@ roll_calls |>
 
 Does the above information help us understand the voting issues of the UN over time? Explain.
 
-> Insert your answer here
+> The above information gives us context clues on the proportions of voting from each country and one can make assumptions about which topics may have been highly voted on based on history and world events. 
 
 
 
