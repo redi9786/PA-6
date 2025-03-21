@@ -135,27 +135,28 @@ Comment on the following code, what is happening in each line?  One way to appro
 
 ```{r}
 unvotes |> 
-  count(country, vote) |> #comment
-  group_by(country) |> #comment
-  mutate(total = sum(n)) |> #comment 
-  mutate(prop_vote = n/total) |> #comment
+  count(country, vote) |> #counting the votes and country
+  group_by(country) |> #grouping the votes by country
+  mutate(total = sum(n)) |> #making a new variable of the total sum of votes 
+  mutate(prop_vote = n/total) |> #making a percentage?
   filter(country %in% c("United States", "Canada", 
                         "Germany", "France",
                         "Italy", "Japan",
-                        "United Kingdom")) |> #comment
+                        "United Kingdom")) |> #Only using the votes for the countries specified
   ggplot(aes(x = country, y = prop_vote, 
-             fill = vote)) + #comment
-  geom_col(position = position_stack()) + #comment
+             fill = vote)) + #creating a graph for each proportional vote
+  geom_col(position = position_stack()) + #creating labels
   labs(x = "Group of Seven Countries",
        y = "Proportion of Votes",
        title = "Voting Record of the G7",
-       fill = "Vote") + #comment
-  theme_minimal() +  #comment
-  scale_fill_viridis_d(end = 0.8) + #comment
-  coord_flip() #comment
+       fill = "Vote") + #creating color for votes specific to country
+  theme_minimal() +  #graph theme
+  scale_fill_viridis_d(end = 0.8) + #visual aesthetic 
+  coord_flip() #flipping the x and y axis
 ```
 
 > Describe what the graph above demonstrates above UN voting records for the G7 
+It shows the proportion of votes (abstain, no, yes) within the top 7 countries
   
   
   
