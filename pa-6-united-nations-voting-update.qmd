@@ -266,7 +266,7 @@ roll_calls |>
 
 **If we are only interested in retaining the records associated with the `issues` labeled in our data, which join(s) should we use?**
 
-> left_join
+> right_join
 
 
 
@@ -279,16 +279,20 @@ Now that we know how to join the data, we will use the following code to examine
 Be sure to run the code via the green arrow on the code chunk, as the `case_when()` code can get finicky sometimes and claim an error about a comma in the code when it doesn't exist.  *Comment on the code where indicated* and add your chosen join function
 ```{r}
 roll_calls |> 
-  _________(issues, by = "rcid") |>  #join roll_calls and issues so that just the votes related to the issues data are retained.
+  right_join(issues, by = "rcid") |>  #join roll_calls and issues so that just the votes related to the issues data are retained.
   mutate(issue = case_when(
     issue == "Arms control and disarmament" ~ "Arms Control",
     issue == "Nuclear weapons and nuclear material" ~ "Nuclear Weapons",
     issue == "Palestinian conflict" ~ "Palestinian Conflict")) |>   #what is happening in this mutate function?
+  #We telling R to define certain issues to mean the same thing to be counted
   drop_na(issue) |> #drop NAs for values not defined in the previous line of code
   mutate(year = lubridate::year(date)) |> #create a column `year` that contains the year value
   count(year, issue) |> #what does this line do?
+  #counts number of issues in per year
   ggplot(aes(x = year, y = n, group = issue)) + #what does this line do?
+  #ggplot is the creating a graph where x axis is the year, and y is the number of votes, grouped by issue
   geom_line(aes(color = issue)) + #what does this line do?
+  #Adds color each issue
   labs(x = "Year", y = "Number of Votes",
        title = "United Nations Votes per Year",
        subtitle = "Conflict and Arms Related Votes",
@@ -300,7 +304,7 @@ roll_calls |>
 
 
 What do you notice? What do you wonder based on the graph created?
-> Insert Answer Here
+> I notice that there is a high number of votes between 1980 and 2000 regarding the issues, which coincides with the fall of the USSR in the 90s.
 
 
 
