@@ -238,7 +238,7 @@ dim(roll_calls)
 ```
 
 
-> Insert Answer Here
+> I would assume the countries match with the issues and the only thing that would not match is how each country voted.
 
 
 
@@ -246,27 +246,27 @@ Now let's try joining the `roll_calls` with the `issues` data.  Compare the foll
 
 ```{r}
 roll_calls |> 
-  left_join(issues, by = "rcid") #description of join
+  left_join(issues, by = "rcid") #were retaining all the data in issues dataset by the name rcid
 ```
 
 ```{r}
 roll_calls |> 
-  right_join(issues, by = "rcid") #description of join
+  right_join(issues, by = "rcid") #were retaining all the data in the issues dataset by the name rcid but on the right
 ```
 
 ```{r}
 roll_calls |> 
-  full_join(issues, by = "rcid") #description of join
+  full_join(issues, by = "rcid") #retains all cases in either dataset
 ```
 
 ```{r}
 roll_calls |> 
-  inner_join(issues, by = "rcid") #description of join
+  inner_join(issues, by = "rcid") #retains only cases in both datasets
 ```
 
 **If we are only interested in retaining the records associated with the `issues` labeled in our data, which join(s) should we use?**
 
-> Insert answer here
+> left_join
 
 
 
